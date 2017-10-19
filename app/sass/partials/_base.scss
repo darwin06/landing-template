@@ -1,0 +1,88 @@
+// Use Compass ('cause it rocks!)
+//@import "compass";
+
+// Font weights
+$light: 100;
+$regular: 400;
+$bold: 600;
+
+// Base Font
+$base-font-family: 'roboto', sans-serif;
+$base-font-weight: $regular;
+$base-font-size: 18px;
+$base-line-height: 1.2;
+
+// Heading Font
+$heading-font-family: 'oswald', serif;
+
+// Fixed Font
+$fixed-font-family: monospace;
+$fixed-font-size: 85%;
+$fixed-line-height: $base-line-height;
+
+// B U T T O N S  O P T I O N S
+
+// Durations
+$fastDuration: .1s !default;
+$mediumDuration: .3s !default;
+$slowDuration: .5s !default;
+
+// Colors
+$primarycolor: rgba(0, 0, 0, .54) !default;
+$secondarycolor: rgba(0, 0, 0, .87) !default;
+$thirdcolor: #fed000 !default;
+$fourthcolor: #0075bf !default;
+$darkcolor: #000 !default;
+$darkbluecolor: #000030 !default;
+$lightcolor: #fff !default;
+$shadowcolor: rgba(0, 0, 0, .6) !default;
+$link: $darkbluecolor !default;
+
+// Social media colors
+$twitter: #00aced;
+$facebook: #3b5998;
+$googleplus: #dd4b39;
+$linkedin: #007bb6;
+$youtube: #bb0000;
+$instagram: #bc2a8d;
+
+// Browser Prefixes - Which CSS prefixes should be used?
+$webkit: true !default;
+$moz: false !default;
+$ms: false !default;
+$o: false !default;
+
+// Headings
+$header-font-weight: $bold;
+
+// grid variables
+$grid-columns: 12; 		// Number of colums.
+$grid-max-width: 75em;	// Layout max width.
+
+// breakpoints
+$ironman		: 36em; // 576/16
+$cyborg			: 48em; // 768/16
+
+
+
+// T O P N A V
+$topnav-bgcolor: $fourthcolor;
+$topnav-color: $light;
+$topnav-bgcolor-hover: darken($fourthcolor, 10);
+
+// CLEARFIX
+%clearfix {
+  *zoom: 1;
+  
+  &:before,
+  &:after {
+    content: '';
+    display: table;
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
+//@import "modules/all";

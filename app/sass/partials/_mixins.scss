@@ -1,0 +1,135 @@
+@function image_url($path){
+	@return ( url("images/" + $path ) )
+}
+
+@mixin border-box {
+	-webkit-box-sizing	: border-box;
+	   -moz-box-sizing	: border-box;
+	        box-sizing	: border-box;
+}
+
+// V I E W  P O R T  F O N T S
+@function get-vw($target) {
+  $vw-context: (1440 * 0.01) * 1px;
+  @return ($target / $vw-context) * 1vw;
+}
+
+
+// B U T T  O N S  E F F E C T S
+
+
+// prefix declarations
+@mixin prefixed($property, $value) {
+  @if $webkit == true {
+    -webkit-#{$property}: #{$value};
+  }
+
+  @if $moz == true {
+    -moz-#{$property}: #{$value};
+  }
+
+  @if $ms == true {
+    -ms-#{$property}: #{$value};
+  }
+
+  @if $o == true {
+    -o-#{$property}: #{$value};
+  }
+
+  #{$property}: #{$value};
+}
+
+// prefix keyframes
+@mixin keyframes($name) {
+  @if $webkit == true {
+    @-webkit-keyframes #{$name} {
+      @content;
+    }
+  }
+
+  @if $moz == true {
+    @-moz-keyframes #{$name} {
+      @content;
+    }
+  }
+
+  @if $ms == true {
+    @-ms-keyframes #{$name} {
+      @content;
+    }
+  }
+
+  @if $o == true {
+    @-o-keyframes #{$name} {
+      @content;
+    }
+  }
+
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+
+
+@mixin hardwareAccel() {
+	// Improve performance on mobile/tablet devices
+	@include prefixed(transform, translateZ(0));
+}
+
+@mixin improveAntiAlias() {
+	// Improve aliasing on mobile/tablet devices
+	box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+
+@mixin fontSmooth() {
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+@mixin forceBlockLevel() {
+	// Transforms need to be block-level to work
+	display: inline-block;
+	vertical-align: middle;
+}
+
+@mixin hacks() {
+	@include forceBlockLevel();
+	@include hardwareAccel();
+	@include improveAntiAlias();
+	@include fontSmooth();
+}
+
+/* Overline From Center */
+@mixin overline-from-center {
+	$duration: $mediumDuration;
+
+	@include hacks();
+	position: relative;
+	overflow: hidden;
+	
+	&:before {
+		content: "";
+		position: absolute;
+		z-index: -1;
+		left: 50%;
+		right: 50%;
+		top: 0;
+		background: $activeColor;
+		height: 4px;
+		@include prefixed(transition-property, "left, right");
+		@include prefixed(transition-duration, $duration);
+		@include prefixed(transition-timing-function, ease-out);
+	}
+
+	&:hover,
+	&:focus,
+	&:active {
+
+		&:before {
+			left: 0;
+			right: 0;
+		}
+	}
+}

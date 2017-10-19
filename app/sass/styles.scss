@@ -1,0 +1,468 @@
+@import 'partials/about';
+
+// Bootstrap
+@import './node_modules/bootstrap/scss/bootstrap.scss';
+
+// Modules and Variables
+@import 'partials/base';
+
+// Partials
+@import 'partials/typo';
+@import 'partials/mixins';
+
+// Third-party
+@import 'vendors/font-awesome/font-awesome';
+@import "vendors/slick";
+@import "vendors/slick-theme";
+
+html,
+body {
+  height: 100%;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 100%;
+  overflow-y: scroll;
+
+  -webkit-overflow-scrolling: touch;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  background: $lightcolor;
+  color: $primarycolor;
+  font-family: $base-font-family;
+  font-size: 16px;
+  font-weight: $regular;
+  line-height: 1.2;
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  color: $secondarycolor;
+  font-family: $heading-font-family;
+  font-weight: $regular;
+  margin: 0 0 .5em;
+}
+
+h1 { font-size: 1.625em; }
+h2 { font-size: 1.5em; }
+h3 { font-size: 1.375em; }
+h4 { font-size: 1.25em; }
+h5 { font-size: 1.125em; }
+
+a {
+  color: lighten($link, 5);
+  outline: none;
+  text-decoration: none;
+
+  &:focus,
+  &:hover {
+    color: $darkcolor;
+  }
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+}
+
+ul { margin: 0 0 0 1em; }
+
+.clearfix {
+  zoom: 1;
+  &:before,
+  &:after {
+    content: '';
+    display: table;
+  }
+
+  &:after { clear: both; }
+}
+
+p { margin: 0 0 1em; }
+
+header {
+  border-bottom: 2px solid $primarycolor;
+
+  &.sticky {
+    background-color: $lightcolor;
+    height: 80px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9;
+  }
+}
+
+section,
+.section {
+  .title {
+    border-bottom: 1px solid $primarycolor;
+    font-size: 3em;
+    line-height: 1;
+    margin: 0 0 .5em;
+    padding: 0 0 .5em;
+    text-align: center;
+    text-transform: uppercase;
+  }
+}
+
+blockquote,
+cite {
+  color: $secondarycolor;
+  display: block;
+  font-family: $heading-font-family;
+  font-size: 2.5em;
+  font-style: italic;
+  margin: .5em 0;
+  overflow: hidden;
+  padding: .5em 0 .5em 1em;
+  position: relative;
+
+  &:before {
+    color: $shadowcolor;
+    content: '\201C';
+    font-size: 3em;
+    font-weight: bold;
+    left: 0;
+    position: absolute;
+    top: 0;
+    z-index: -1;
+  }
+}
+
+// H E A D E R
+// =================================================================
+.logo {
+  line-height: 0;
+  margin: 0;
+
+  img {
+    display: block;
+    margin: 0 auto;
+  }
+
+  svg {
+    display: inline-block;
+    height: auto;
+    margin: 0;
+    max-width: 160px;
+    width: 100%;
+    background-color: $lightcolor;
+  }
+}
+
+@keyframes draw {
+  0% {
+    stroke-dasharray: 11600;
+    stroke-dashoffset: 11600;
+    stroke-width: 66px;
+  }
+
+  100% {
+    stroke-dasharray: 11600;
+    stroke-dashoffset: 0;
+    stroke-width: 66px;
+  }
+}
+
+// S V G  A N I M A T I O N
+// ============================================
+@keyframes draw-letter {
+  0% {
+    fill: transparent;
+    stroke-dasharray: 2475.13134765625;
+    stroke-dashoffset: 2475.13134765625;
+    stroke-width: 10px;
+  }
+
+  90% {
+    fill: transparent;
+    stroke-dasharray: 3828.447509765625;
+    stroke-dashoffset: 0;
+    stroke-width: 10px;
+  }
+
+  100% {
+    fill: #000;
+  }
+}
+
+.rectangle-background {
+  // fill: transparent;
+  stroke: #000;
+  stroke-dasharray: 0;
+  stroke-dashoffset: 0;
+  stroke-width: 0;
+}
+
+.letter {
+  fill: transparent;
+  stroke: #000;
+  stroke-dasharray: 0;
+  stroke-dashoffset: 0;
+  stroke-width: 0;
+}
+
+.logo .rectangle-background {
+  -webkit-animation: 1s .3s draw linear forwards;
+  animation: 1s .3s draw linear forwards;
+}
+.logo .letter {
+  -webkit-animation: 1s .3s draw-letter linear forwards;
+  animation: 1s .3s draw-letter linear forwards;
+}
+
+.social-links {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+
+  li { display: inline-block; }
+   
+  li a {
+    background-color: $darkcolor;
+    color: $lightcolor;
+    display: block;
+    font-size: 1.5em;
+    height: 48px;
+    margin: 0 0 .25em;
+    padding: .5em;
+    text-align: center;
+    width: 48px;
+    transition: background-color $mediumDuration ease-in-out;
+
+    &.twitter { background-color: $twitter; }
+    &.facebook { background-color: $facebook; }
+    &.linkedin { background-color: $linkedin; }
+    &.instagram { background-color: $instagram; }
+    &.googleplus { background-color: $googleplus; }
+
+    &:hover { background-color: $shadowcolor; }
+  }
+}
+
+nav {
+  text-align: right;
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    display: inline-block;
+
+    a {
+      display: block;
+      padding: .5em 1.5em;
+      transition: background-color $mediumDuration ease-in-out;
+
+      &:hover,
+      // &:focus,
+      &.active {
+        background-color: lighten($link, 5);
+        color: $lightcolor;
+        text-decoration: none;
+      }
+    }
+
+    span { display: none; }
+  }
+}
+
+// C O N T E N T
+// =================================================================
+section:target:before {
+  content:"";
+  display: block;
+  height: 80px; /* fixed header height*/
+  margin: -80px 0 0; /* negative fixed header height */
+}
+
+#slickSlider {
+  padding-top: 80px;
+  color: $lightcolor;
+
+  .slick-slide { position: relative; }
+
+  img {
+    margin: 0 auto;
+    max-width: 1360px;
+    padding-bottom: 0;
+    width: 100%;
+  }
+
+  .slide {
+    background-color: $darkbluecolor;
+
+    &.slide-02 { background-color: lighten($darkbluecolor, 10); }
+    &.slide-03 { background-color: lighten($darkbluecolor, 20); }
+  }
+
+  .title {
+    color: inherit;
+    margin: 0;
+    font-size: 2em;
+    padding-bottom: .5em;
+  }
+
+  a { color: $lightcolor; }
+  
+}
+
+.article-meta {
+  color: rgba(69, 90, 100, 0.7);
+  font-size: .75em;
+  margin-bottom: 1em;
+}
+
+.thumbnail {
+  box-shadow: 0 0 3px 0 $primarycolor;
+  border: .5em solid $lightcolor;
+  line-height: 0;
+  margin: 0 0 1em;
+  overflow: hidden;
+  position: relative;
+
+  img { transition: transform $mediumDuration ease-in-out; }
+
+  &:hover,
+  &:focus {
+    img {
+      transform: scale(1.15);
+    }
+  }
+
+  figcaption {
+    background: $shadowcolor;
+    bottom: 0;
+    color: $lightcolor;
+    left: 0;
+    line-height: 1.1;
+    padding: .5em;
+    position: absolute;
+    text-align: right;
+    width: 100%;
+  }
+}
+
+// S I D E B A R
+// =================================================================
+.widget {
+  border-bottom: 1px solid $primarycolor;
+  margin: 0 0 1em;
+  padding: 0 0 1em;
+}
+
+// F O O T E R
+// =================================================================
+footer {
+  background-color: lighten($darkbluecolor, 5);
+  color: $lightcolor;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    color: inherit;
+  }
+
+  .title {
+    border-bottom: 1px solid $lightcolor;
+    padding-bottom: .5em;
+    text-align: center;
+  }
+
+  .copyright {
+    background-color: $darkbluecolor;
+  }
+}
+
+// M E D I A  Q U E R I E  576px
+// =================================================================
+@media screen and (min-width: $ironman) {
+  nav {
+    li  a {
+      padding: .5em;
+    }
+
+    li a span { display: inline; }
+  }
+}
+
+// M E D I A  Q U E R I E  768px
+// =================================================================
+@media screen and (min-width: $cyborg) {
+  section,
+  .section {
+    .title {
+      font-size: 5vw;
+      word-break: break-all;
+    }
+  }
+
+  // H E A D E R
+  // =================================================================
+  header {
+    // STICKY HEADER
+    &.sticky {
+      background-color: $lightcolor;
+      height: 80px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 9;
+    }
+  }
+
+  .logo {
+    text-align: left;
+
+    svg,
+    img {
+      display: inline;
+      margin: 0;
+      transition: max-width $slowDuration ease-in-out;
+    }
+  }
+
+  // CONTENT
+  // =================================================================
+  #slickSlider {
+    .description {
+      background-color: $shadowcolor;
+      bottom: 0;
+      left: 0;
+      position: absolute;
+      width: 100%;
+    }
+
+    p { font-size: 1.5em; }
+  }
+  
+  // F O O T E R
+  // =================================================================
+  footer {
+    .title {
+      text-align: left;
+    }
+  }
+}

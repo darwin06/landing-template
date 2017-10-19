@@ -1,0 +1,51 @@
+@import "base";
+@import "mixins";
+
+ 
+*, *:after, *:before {
+  margin: 0;
+  padding: 0;
+  @include border-box;
+}
+     
+img {
+  height: auto !important;
+  max-width: 100%;
+  width: auto;
+}
+ 
+.inner {
+  margin: 0 auto;
+  width: 100%;
+}
+ 
+.inner,
+.row {
+  @extend %clearfix;
+}
+
+.row {
+  font-size: $base-font-size; //font style to all
+  line-height: $base-line-height;
+}
+      
+[class*='column-'] {
+  float: left;
+  padding: 1em;
+  width: 100%;
+  min-height: 1px;
+}
+ 
+//@media #{$breakpoint-medium} {
+@media ( min-width: $cyborg ) {
+  .inner {
+    width: 95%;
+    max-width: $grid-max-width;
+  }
+
+  @for $i from 1 through $grid-columns {
+    .column-#{$i} {
+      width: 100% / $grid-columns * $i;
+    }
+  }
+}
