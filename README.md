@@ -1,6 +1,6 @@
-#TEMPLATE
+# TEMPLATE
 
-##DEV Conf
+## DEV Conf
 
 1. From CLI open path 'template'
 2. run command '_npm install_' wait to all libraries are installed.
@@ -10,4 +10,4 @@
 
 __Happy Coding!__
 
-###Darwin Mateos
+### Darwin Mateos
